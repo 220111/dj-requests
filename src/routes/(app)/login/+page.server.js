@@ -9,7 +9,7 @@ import * as table from '$lib/server/db/schema';
 
 export const load = async (event) => {
 	if (event.locals.user) {
-		return redirect(302, '/demo/lucia');
+		return redirect(302, '/app');
 	}
 	return {};
 };
