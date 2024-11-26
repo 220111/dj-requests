@@ -14,3 +14,12 @@ export const session = pgTable('session', {
 		.references(() => user.id),
 	expiresAt: timestamp('expires_at', { withTimezone: true, mode: 'date' }).notNull()
 });
+
+export const act = pgTable('act', {
+	id: text('id').primaryKey(),
+	userId: text('user_id')
+		.notNull()
+		.references(() => user.id),
+	name: text('name').notNull().unique(),
+	image: text('image'),
+})

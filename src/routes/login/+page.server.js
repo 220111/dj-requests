@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { hash, verify } from '@node-rs/argon2';
 import { encodeBase32LowerCase } from '@oslojs/encoding';
 import { fail, redirect } from '@sveltejs/kit';
@@ -47,7 +48,7 @@ export const actions = {
 		const session = await auth.createSession(sessionToken, existingUser.id);
 		auth.setSessionTokenCookie(event, sessionToken, session.expiresAt);
 
-		return redirect(302, '/demo/lucia');
+		return redirect(302, '/app');
 	},
 	register: async (event) => {
 		const formData = await event.request.formData();
@@ -79,7 +80,7 @@ export const actions = {
 		} catch (e) {
 			return fail(500, { message: 'An error has occurred' });
 		}
-		return redirect(302, '/demo/lucia');
+		return redirect(302, '/app');
 	}
 };
 
@@ -90,6 +91,9 @@ function generateUserId() {
 	return id;
 }
 
+/**
+ * @param {FormDataEntryValue | null} username
+ */
 function validateUsername(username) {
 	return (
 		typeof username === 'string' &&
@@ -99,6 +103,9 @@ function validateUsername(username) {
 	);
 }
 
+/**
+ * @param {FormDataEntryValue | null} password
+ */
 function validatePassword(password) {
 	return typeof password === 'string' && password.length >= 6 && password.length <= 255;
 }
