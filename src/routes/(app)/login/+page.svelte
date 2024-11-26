@@ -26,9 +26,11 @@
 		DJ Requests
 	  </svelte:fragment>
 	  <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-		<p style="color: red">{form?.message ?? ''}</p>
 		<form class="flex flex-col space-y-6" method="post" action="?/login" use:enhance>
-		  <h3 class="text-xl font-medium text-gray-900 dark:text-white p-0">Change Password</h3>
+		  <h3 class="text-xl font-medium text-gray-900 dark:text-white p-0">Login or Sign Up</h3>
+		  {#if form !== null }
+		  <p style="color: red">{form?.message ?? ''}</p>
+		  {/if}
 		  <Label class="space-y-2">
 			<span>Username</span>
 			<Input name="username" placeholder="johnsmith123" required />
@@ -38,7 +40,6 @@
 			<Input type="password" name="password" placeholder="•••••" required />
 		  </Label>
 		  <Button type="submit" class="w-full1">Sign in</Button>
-		  <Button formaction="?/register">Register</Button>
 		</form>
 	  </div>
 	</Register>
