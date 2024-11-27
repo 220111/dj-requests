@@ -25,13 +25,13 @@ export const actions = {
     create: async (event) => {
         const user = event.locals.user;
         const formData = await event.request.formData();
-		const name = formData.get('name')?.toString();
+		const name = formData.get('name')?.toString().trim();
 
         if (!user) {
             return redirect(302, '/login');
         }
 
-        if(name === undefined){
+        if(name === undefined || name === ""){
             return Error("Name is invalid!");
         }
 

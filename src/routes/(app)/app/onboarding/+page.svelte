@@ -27,11 +27,11 @@
 					<div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
 						<div class="sm:col-span-2">
 							<Label class="mb-2" for="username">Username</Label>
-							<Input type="text" placeholder="JohnSmith123" name="username" id="username" />
+							<Input type="text" placeholder="JohnSmith123" name="username" id="username" required />
 						</div>
 						<div class="sm:col-span-2">
 							<Label class="mb-2" for="password">Password</Label>
-							<Input type="password" placeholder="********" name="password" id="password" />
+							<Input type="password" placeholder="********" name="password" id="password" required />
 						</div>
 						<Button type="submit">Register</Button>
 					</div>
@@ -49,7 +49,7 @@
 					<div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
 						<div class="sm:col-span-2">
 							<Label class="mb-2" for="name">Name</Label>
-							<Input type="text" placeholder="DJ Henry" name="name" id="name" />
+							<Input type="text" placeholder="DJ Henry" name="name" id="name" required />
 						</div>
 						<Button type="submit">Create</Button>
 					</div>
