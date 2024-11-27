@@ -67,6 +67,26 @@
 					</div>
 				</form>
 			{/if}
+
+			{#if data.step == 3}
+				<P class="text-s mb-4">
+					Events let you organize your setlists and invite hosts to create do no play lists.
+				</P>
+
+				<form method="post" action="?/add-event" use:enhance>
+					<div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+						<div class="sm:col-span-2">
+							<Label class="mb-2" for="event-name">Event Name</Label>
+							<Input type="text" placeholder="Smith Wedding" name="event-name" id="event-name" required />
+						</div>
+						<div class="sm:col-span-2">
+							<Label class="mb-2" for="client-email">Event Name</Label>
+							<Input type="text" placeholder="dsmith@email.com" name="client-email" id="client-email" />
+						</div>
+						<Button type="submit">Create</Button>
+					</div>
+				</form>
+			{/if}
 		</div>
 	</Register>
 </Section>
