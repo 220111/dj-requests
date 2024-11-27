@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, integer, timestamp, uuid, boolean } from 'drizzle-orm/pg-core';
 
 export const user = pgTable('user', {
 	id: text('id').primaryKey(),
@@ -22,4 +22,16 @@ export const act = pgTable('act', {
 		.references(() => user.id),
 	name: text('name').notNull().unique(),
 	image: text('image'),
+})
+
+export const event = pgTable('event', {
+	id: uuid('id').primaryKey().defaultRandom(),
+	act_id: uuid('act_id')
+		.notNull()
+		.references(() => act.id),
+	name: text('name').notNull(),
+	client_email: text('client_email'),
+	start_time: timestamp('start_time', {withTimezone: true}).notNull(),
+	accepting_requests: boolean('accepting_requests').default(false).notNull(),
+	ended: boolean('ended').default(false).notNull()
 })
