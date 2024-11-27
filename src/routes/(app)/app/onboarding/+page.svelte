@@ -19,7 +19,7 @@
 		<div class="space-y-4 p-6 sm:p-8 md:space-y-6">
 			<h1 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Onboading</h1>
 			<StepIndicator currentStep={data.step} {steps} glow />
-			{#if form !== null }
+			{#if form !== null}
 				<p style="color: red">{form?.message ?? ''}</p>
 			{/if}
 			{#if data.step == 1}
@@ -27,11 +27,23 @@
 					<div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
 						<div class="sm:col-span-2">
 							<Label class="mb-2" for="username">Username</Label>
-							<Input type="text" placeholder="JohnSmith123" name="username" id="username" required />
+							<Input
+								type="text"
+								placeholder="JohnSmith123"
+								name="username"
+								id="username"
+								required
+							/>
 						</div>
 						<div class="sm:col-span-2">
 							<Label class="mb-2" for="password">Password</Label>
-							<Input type="password" placeholder="********" name="password" id="password" required />
+							<Input
+								type="password"
+								placeholder="********"
+								name="password"
+								id="password"
+								required
+							/>
 						</div>
 						<Button type="submit">Register</Button>
 					</div>

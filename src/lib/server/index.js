@@ -5,7 +5,7 @@ import { eq } from 'drizzle-orm';
 /**
  * @param {string} userId
  */
-export async function getActs(userId){
+export async function getActs(userId) {
     return await db.select().from(act).where(eq(act.userId, userId));
 }
 
@@ -13,6 +13,6 @@ export async function getActs(userId){
  * @param {string} userId
  * @param {string} name
  */
-export async function createAct(userId, name){
+export async function createAct(userId, name) {
     await db.insert(act).values({ userId: userId, name: name })
 }

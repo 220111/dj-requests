@@ -31,7 +31,7 @@ export const event = pgTable('event', {
 		.references(() => act.id),
 	name: text('name').notNull(),
 	client_email: text('client_email'),
-	start_time: timestamp('start_time', {withTimezone: true}).notNull(),
+	start_time: timestamp('start_time', { withTimezone: true }).notNull(),
 	accepting_requests: boolean('accepting_requests').default(false).notNull(),
 	ended: boolean('ended').default(false).notNull()
 })

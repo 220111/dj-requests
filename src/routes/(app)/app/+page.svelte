@@ -1,6 +1,6 @@
 <script>
-    /** @type {{ data: import('./$types').PageData }} */
-    let { data } = $props();
+	/** @type {{ data: import('./$types').PageData }} */
+	let { data } = $props();
 </script>
 
 <h1>Hi, {data.user.username}!</h1>

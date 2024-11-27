@@ -9,42 +9,42 @@ import * as auth from '$lib/server/auth';
 
 /** @type {import('./$types').PageServerLoad} */
 export const load = async (event) => {
-    const user = event.locals.user;
+	const user = event.locals.user;
 	if (!user) {
 		return { user: null, step: 1 };
 	}
-    const acts = await getActs(user.id);
-    if (acts.length == 0){
-        return { user: user, step: 2};
-    }
+	const acts = await getActs(user.id);
+	if (acts.length == 0) {
+		return { user: user, step: 2 };
+	}
 
 	return { user: user, step: 3, acts: acts };
 };
 
 export const actions = {
-    create: async (event) => {
-        const user = event.locals.user;
-        const formData = await event.request.formData();
+	create: async (event) => {
+		const user = event.locals.user;
+		const formData = await event.request.formData();
 		const name = formData.get('name')?.toString().trim();
 
-        if (!user) {
-            return redirect(302, '/login');
-        }
+		if (!user) {
+			return redirect(302, '/login');
+		}
 
-        if(name === undefined || name === ""){
-            return Error("Name is invalid!");
-        }
+		if (name === undefined || name === "") {
+			return Error("Name is invalid!");
+		}
 
-        createAct(user.id, name);
-        redirect(302, "/app/onboarding");
-    },
-    register: async (event) => {
+		createAct(user.id, name);
+		redirect(302, "/app/onboarding");
+	},
+	register: async (event) => {
 		const formData = await event.request.formData();
 		const username = formData.get('username');
 		const password = formData.get('password');
 
-        console.log(username);
-        console.log(password);
+		console.log(username);
+		console.log(password);
 
 		if (!validateUsername(username)) {
 			return fail(400, { message: 'Invalid username' });
@@ -69,7 +69,7 @@ export const actions = {
 			const session = await auth.createSession(sessionToken, userId);
 			auth.setSessionTokenCookie(event, sessionToken, session.expiresAt);
 		} catch (e) {
-            console.log(e);
+			console.log(e);
 			return fail(500, { message: 'An error has occurred' });
 		}
 		redirect(302, "/app/onboarding");
